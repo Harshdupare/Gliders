@@ -24,8 +24,8 @@ function Block() {
 
   return (<>
           {Array.isArray(blockdata) ? blockdata.map((e, index) =>{
-            return <div  key={index} role="button" tabIndex="0" className="items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-gray-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">        
-                  <h5>{e.finalque} </h5><br></br>
+            return <div  key={index} role="button" tabIndex="0" className="hover:bg-blue-200 p-4 font-semibold rounded-lg">        
+                  <h5>{e.finalque} </h5>
                 </div>      
           }
           ): null

@@ -47,7 +47,7 @@ export function Login({setToken}) {
   return (
       <div>
           <div className="flex justify-center h-screen items-center">
-              <Card onSubmit={handleSubmit} className="border border-gray-700 p-10" color="transparent" shadow={false}>
+              <Card onSubmit={handleSubmit} className="bg-white border border-gray-700 p-10" color="transparent" shadow={false}>
                   <Typography variant="h4" color="blue-gray">
                       Log In
                   </Typography>

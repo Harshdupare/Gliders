@@ -29,7 +29,7 @@ function App() {
       <NavbarDefault token={token} handleLogout={handleLogout} />
       <RecoilRoot>
         <Routes>
-          <Route path = "/" element ={<Home/>}></Route>
+          <Route path = "/" element ={<Home setToken={setToken} />}></Route>
             <Route path = "/register" element ={<Register/>}></Route>
             <Route
               path="/login"

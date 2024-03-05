@@ -20,19 +20,15 @@ function Sidebar() {
 //   getpagesdata();
 // },[])
   return (
-    <div>
-        <div className="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 h-full max-h-full w-full max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5">
+    <div className='bg-opacity-40'>
+        <div className="relative flex flex-col bg-clip-border rounded-xl bg-opacity-30 bg-gray-200 text-gray-700 h-full max-h-full w-full max-w-[15rem] mt-10 p-4 shadow-xl shadow-blue-gray-900/5">
             <div className="mb-2 p-4">
-                <h5 className="block antialiased tracking-normal font-sans text-xl font-semibold leading-snug text-gray-900">Medicate</h5>
+                <h5 className="block antialiased tracking-normal font-sans text-xl font-semibold leading-snug text-gray-900">History</h5>
             </div>
-            <button onClick={getpagesdata}>See history</button>
-            <nav className="flex flex-col gap-1 min-w-[240px] p-2 font-sans text-base font-normal text-gray-700">
+            <button className='bg-black rounded-xl p-4 text-white' onClick={getpagesdata}>See history</button>
+            <nav className="flex flex-col w-[200px] pt-2 font-sans text-base font-normal text-gray-700">
                 <Block  />
             </nav>
-            
-            <div className="w-full pt-5 px-4 mb-8 mx-auto ">
-               <p><u>WELCOM TO MEDICATE</u></p>
-            </div>
         </div>
     </div>
   )

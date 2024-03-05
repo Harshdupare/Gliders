@@ -9,9 +9,7 @@ export function Interface(){
 
     return ( 
         <div>       
-            <main className='z-30'>
-                <Chat />
-            </main>
+            <Chat/>
         </div>
      );
 }

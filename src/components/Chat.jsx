@@ -1,4 +1,4 @@
-import React , {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { Input, Button } from "@material-tailwind/react";
 import axios from "axios";
 import Response from '../components/Response';
@@ -7,84 +7,83 @@ import { page_source_id } from "./store/atom/atom";
 import { useRecoilState } from "recoil";
 
 export function Chat() {
-  const [question, setquestion] = useState("");
+  const [question, setQuestion] = useState("");
   const [response, setResponse] = useState("");
-  const [finalque, setFinalque] = useState("");
-
-  const [id , setId] = useRecoilState(page_source_id)
-
-  const onchange = ({ target }) => setquestion(target.value);
+  const [finalQuestion, setFinalQuestion] = useState("");
   
-  const submitFun = async()=>{
 
-    // llm response
-     const res = await axios.post('http://127.0.0.1:5000/data', {
-            question : question
-          }, {
-          headers: {
-            'Content-Type': 'text/plain'
-          },
-          responseType: 'text'
-      })
-      setResponse(res.data)
-      setFinalque(question)
+  const [id, setId] = useRecoilState(page_source_id);
 
-      // for creating a block page
-   
-      
-  }
+  const handleChange = ({ target }) => {
+    setQuestion(target.value)
+    
+  };
 
-  const fetch = async() =>{
-    if(response !== "" || finalque !== ""){
-      await axios.post(`http://127.0.0.1:5000/history/${id}`,{
-            response : response,
-            finalque : finalque,
-            source_id : id
-        }, {
-          headers : {
+  const handleSubmit = async () => {
+    const res = await axios.post('http://127.0.0.1:5000/data', {
+      question: question
+    }, {
+      headers: {
+        'Content-Type': 'text/plain'
+      },
+      responseType: 'text'
+    });
+    setResponse(res.data);
+    setFinalQuestion(question);
+    setQuestion("")
+  };
+
+  const saveHistory = async () => {
+    if (response !== "" || finalQuestion !== "") {
+      await axios.post(`http://127.0.0.1:5000/history/${id}`, {
+        response: response,
+        finalQuestion: finalQuestion,
+        source_id: id
+      }, {
+        headers: {
           'Content-Type': 'application/json'
-        }})
-        setId(id + 1)
+        }
+      });
+      setId(id + 1);
     }
-    
-  }
-  useEffect(()=>{
-    fetch();
-  }, [response])
-  
-  return (
-    <>
-       <Sidebar />
-    
-      <div className="flex justify-center">
-      <div className=" absolute w-3/4 left-80">
-        <Response res={response} que={finalque}/>
-      </div>
-      <div className="relative flex w-full max-w-[68rem] top-60">
-        
-        <Input
-          type="question"
-          label="Type your query"
-          value={question}
-          className="pr-20"
-          onChange={onchange}
-          containerProps={{
-            className: "min-w-0",
-          }}
-        />
-        <Button
-          size="sm"
-          color={question ? "gray" : "blue-gray"}
-          disabled={!question}
-          className="!absolute right-1 top-1 rounded"
-          onClick={submitFun}
-        >
-          Submit
-        </Button>
+  };
 
+  useEffect(() => {
+    saveHistory();
+  }, [response]);
+
+  return (
+    <div className="flex">
+      <div className="relative z-20 p-10">
+        <Sidebar />
+      </div>
+        
+      <div className=" w-3/4 opacity-80 flex justify-center mt-16  ">
+        <div className="w-full max-w-screen-lg">
+          <div className=" p-4">
+            <Response res={response} que={finalQuestion}/>
+          </div>
+          <div className="flex justify-between items-center mt-4 ">
+          <Input
+              type="question"
+              label="Type your query"
+              value={question}
+              onChange={handleChange}
+              containerProps={{
+                  className: "min-w-0 m-4 flex-grow"
+              }}
+          />
+              <Button
+                size="sm"
+                color={question ? "gray" : "blue-gray"}
+                disabled={!question}
+                onClick={handleSubmit}
+              >
+                Submit
+              </Button>
+            </div>
+        </div> 
       </div>
     </div>
-    </>
-  
   );
 }

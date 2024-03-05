@@ -19,7 +19,7 @@ function Response({res, que}) {
     // }
     setIsAtive(true);
 
-  },[que, res])
+  },[que,res])
 
   
 
@@ -28,7 +28,7 @@ function Response({res, que}) {
   // }
 
   return (
-    <div className="border border-2 w-1/2 relative inset-x-48" >
+    <div className=" bg-white opacity-80 font-semibold rounded-lg p-10 w-full" >
 
       {isstateactive? 
           arr && arr.map((e, index)=>{

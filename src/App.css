@@ -2,13 +2,8 @@ body {
     width: 100;
     height: 100;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    /*
-* Created with https://www.css-gradient.com
-* Gradient link: https://www.css-gradient.com/?c1=52ed9e&c2=e69fdc&gt=l&gd=dtl
-*/
-background: #52ED9E;
-background: linear-gradient(135deg, #52ED9E, #E69FDC);
-    background-repeat: no-repeat;
-    background-size: contain;
-  }
+    background-color: #8EC5FC;
+    background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
+
+}
   
